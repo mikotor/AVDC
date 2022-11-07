@@ -162,7 +162,7 @@ def main(number, appoint_url, isuncensored=False):
     try:
         if appoint_url == '':
             # ========================================================================搜索番号
-            htmlcode = get_html_javdb('https://javdb.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
+            htmlcode = get_html_javdb('https://javdb006.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             if str(htmlcode) == 'ProxyError':
                 raise TimeoutError
             html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
@@ -182,7 +182,7 @@ def main(number, appoint_url, isuncensored=False):
                     break
             if movie_found == 0:
                 raise Exception('Movie Data not found in javdb.main!')
-            result_url = 'https://javdb.com' + html.xpath('//*[@id="videos"]/div/div/a/@href')[count - 1]
+            result_url = 'https://javdb006.com' + html.xpath('//*[@id="videos"]/div/div/a/@href')[count - 1]
         else:
             result_url = appoint_url
         # ========================================================================请求、判断结果
@@ -249,7 +249,7 @@ def main_us(number, appoint_url=''):
             result_url = appoint_url
         else:
             # ========================================================================搜索番号
-            htmlcode = get_html_javdb('https://javdb.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
+            htmlcode = get_html_javdb('https://javdb006.com/search?q=' + number + '&f=all').replace(u'\xa0', u' ')
             if str(htmlcode) == 'ProxyError':
                 raise TimeoutError
             html = etree.fromstring(htmlcode, etree.HTMLParser())  # //table/tr[1]/td[1]/text()
@@ -293,7 +293,7 @@ def main_us(number, appoint_url=''):
                     break
             if movie_found == 0:
                 raise Exception('Movie Data not found in javdb.main_us!')
-            result_url = 'https://javdb.com' + html.xpath('//*[@id="videos"]/div/div/a/@href')[count - 1]
+            result_url = 'https://javdb006.com' + html.xpath('//*[@id="videos"]/div/div/a/@href')[count - 1]
         # ========================================================================请求、判断结果
         html_info = get_html_javdb(result_url + '?locale=zh').replace(u'\xa0', u' ')
         if str(html_info) == 'ProxyError':
